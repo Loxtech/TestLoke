@@ -121,6 +121,8 @@ namespace TestLoke
                 Console.WriteLine("Incorrect answer");
             }
         }
+
+        // Kunne ikke rigtig få denne version til at virke, prøvede at bruge arrays men kunne ikke indlæse det som enkelt query
         public static void TwoToFive2(int choice)
         {
             if (choice > 1 && choice < 6)
