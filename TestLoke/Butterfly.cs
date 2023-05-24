@@ -149,7 +149,7 @@ namespace TestLoke
                         Console.Write("Age (As number): ");
                         Age[i] = Convert.ToInt32(Console.ReadLine());
 
-                        queryArr[i] = $"'{Color[i]}','','{FirstName[i]}','{LastName[i]}','{Mood[i]}','{Age[i]} + '";
+                        queryArr[i] = $"('{Color[i]}','','{FirstName[i]}','{LastName[i]}','{Mood[i]}','{Age[i]}')";
                     }
                     catch (Exception e)
                     {
@@ -164,13 +164,18 @@ namespace TestLoke
                 string queryRunthrough = "";
                 for (int i = 0; i < choice; i++)
                 {
-                    queryRunthrough = queryRunthrough + "\n"  + queryArr[i];
+                    if (i == choice-1)
+                    {
+                        queryRunthrough = queryRunthrough + "\n" + queryArr[i] + ";";
+                    }
+                    queryRunthrough = queryRunthrough + "\n"  + queryArr[i] + ",";
                 }
-                    string query = $"insert into butterfly values({queryRunthrough})";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
+                Console.WriteLine(queryRunthrough);
+                string query = "insert into butterfly values" + queryRunthrough;
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
 
-                
+
             }
             else
             {
